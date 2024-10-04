@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "api/explain.js", "app/api/explain.tsx", "app/api/explain.js", "tailwind.config.js", "utils/dbConnect.js"],
   "exclude": ["node_modules"]
 }
