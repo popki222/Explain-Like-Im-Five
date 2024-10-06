@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       const msg = await anthropic.messages.create({
         model: "claude-3-5-sonnet-20240620",
         max_tokens: 1024,
-        system: "Please respond like you are explaining to a 5-year-old.",
+        system: "A five year old is asking you a question and you must respond in a way they will understand",
         messages: [{ role: "user", content: question }],
       });
 
