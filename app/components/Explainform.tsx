@@ -66,7 +66,7 @@ const ExplainForm = () => {
           <div className={`mt-4 p-4 bg-background1 rounded-md fadeInBottom text-center  w-[80%] sm:w-[50%]`}>
             <p className="text-white">{answer}</p>
             <div className= " justify center m-4">
-            <Link href="/Explanations">
+            <Link href="/explanations">
               <button className="m-4 px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 ">
                 Go to Explanations Page
               </button>

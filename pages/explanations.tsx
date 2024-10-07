@@ -4,8 +4,15 @@ import Footer from "@/app/components/Footer";
 import axios from "axios";
 import Link from 'next/link';
 
+interface Question {
+  _id: string;
+  name: string;
+  question: string;
+  response: string;
+}
+
 export default function Explanations() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
