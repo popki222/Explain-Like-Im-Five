@@ -68,7 +68,7 @@ export default function Explanations() {
         <div className="flex justify-between items-center w-full max-w-5xl mb-4 w-[50%] sm:w-[80%] ">
           <input style={{ backgroundColor: "black" }}
             type="text"
-            placeholder="Search by name"
+            placeholder="Sort by name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="p-2 border rounded w-1/4 mr-4"

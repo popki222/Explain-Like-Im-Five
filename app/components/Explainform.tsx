@@ -9,9 +9,16 @@ const ExplainForm = () => {
   const [showInput, setShowInput] = useState(true);
   const [fadeAnswer, setFadeAnswer] = useState(false);
   const [displayedQuestion, setDisplayedQuestion] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsDisabled(true);
+    setIsSubmitting(true);
+    setTimeout(() => setIsDisabled(false), 6000);
+    setTimeout(() => setIsSubmitting(false), 6000);
 
     try {
       const response = await axios.post("/api/anthropic", { name, question });
@@ -55,30 +62,30 @@ const ExplainForm = () => {
 
             <button
               type="submit"
-              className="px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className={`px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={isDisabled}
             >
-              Submit
+              {isSubmitting ? 'Submitted... Waiting for response' : 'Submit'}
             </button>
           </form>
         )}
 
         {fadeAnswer && (
-          <div className={`mt-4 p-4 bg-background1 rounded-md fadeInBottom text-center  w-[80%] sm:w-[50%]`}>
+          <div className={`mt-4 p-4 bg-background1 rounded-md fadeInBottom text-center w-[80%] sm:w-[50%]`}>
             <p className="text-white">{answer}</p>
-            <div className= " justify center m-4">
-            <Link href="/explanations">
-              <button className="m-4 px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 ">
-                Go to Explanations Page
-              </button>
-            </Link>
-            
+            <div className="justify-center m-4">
+              <Link href="/explanations">
+                <button className="m-6 px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                  Go to Explanations Page
+                </button>
+              </Link>
+
               <button 
-                className="m-4 px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 "
+                className="m-6 px-6 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 onClick={() => window.location.reload()}
-                >
+              >
                 Submit another question
               </button>
-            
             </div>
           </div>
         )}
